@@ -311,31 +311,47 @@
     height: 100%;
     transform: translate(-50%, -50%);
     z-index: -1;
+    background: url("assets/pics/stars.png") center center;
+    background-size: cover;
     mix-blend-mode: color-dodge;
 }
 
-.galaxy_wrapper {
-    position: absolute;
-    bottom: -1000px;
-    right: -1000px;
-    transform: rotate(-20deg);
+@keyframes stars {
+
 }
 
 .galaxy {
-    will-change: transform;
-    animation: galaxy linear 30s infinite;
-}
-
-.galaxy_center {
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 999;
+    width: 2000px;
+    height: 2000px;
+    transform: translate(-30%, -30%) rotate(-20deg);
+    transform-origin: center center;
+}
+
+.galaxy__center {
+    background: url("assets/pics/galaxy__center.png") no-repeat center;
+    background-size: cover;
+    width: 350px;
+    height: 175px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 }
 
+.galaxy__body {
+    width: 2000px;
+    height: 2000px;
+    background: url("assets/pics/galaxy__body.png") no-repeat center center;
+    background-size: cover;
+    animation: galaxy 30s linear infinite;
+    transform-origin: center center;
+}
+
 @keyframes galaxy {
-    from { transform: scaleY(.5) rotate(0) ; }
+    from { transform: scaleY(.5) rotate(0); }
     to { transform: scaleY(.5) rotate(360deg); }
 }
 
