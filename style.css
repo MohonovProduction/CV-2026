@@ -323,7 +323,7 @@
 
 .galaxy {
     will-change: transform;
-    animation: galaxy linear 120s infinite;
+    animation: galaxy linear 30s infinite;
 }
 
 .galaxy_center {
