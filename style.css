@@ -167,14 +167,18 @@
 .wrapper {
 }
 
-.toggle_list {
-    display: grid;
-    grid-gap: 24px;
-}
-
 .toggle_list__items {
     display: grid;
     grid-gap: 12px;
+}
+
+.toggle_list {
+    display: none;
+}
+
+.toggle_list--active {
+    display: grid;
+    grid-gap: 24px;
 }
 
 .toggle_item,
