@@ -789,6 +789,11 @@
     max-width: var(--content-max);
 }
 
+@keyframes contact-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
 .skills_contacts_article .contact {
     display: grid;
     grid-template-columns: 32px 1fr 24px;
@@ -797,7 +802,7 @@
     min-height: 72px;
     padding: 0 clamp(20px, 4vw, 48px);
     text-decoration: none;
-    color: var(--color-white);
+    color: inherit;
     border-radius: var(--radius-36);
     box-sizing: border-box;
     background: var(--surface-glass);
@@ -805,21 +810,58 @@
     box-shadow: var(--surface-shadow);
     width: 100%;
     max-width: var(--content-max);
-    transition: opacity var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+}
+
+.skills_contacts_article .contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .skills_contacts_article .contact:hover {
-    opacity: 0.92;
+    transform: scale(1.03);
+}
+
+.skills_contacts_article .contact:hover::before {
+    transform: translateX(100%);
+}
+
+.skills_contacts_article .contact:hover .contact__icon {
+    animation: contact-bounce 0.6s ease;
+}
+
+.skills_contacts_article .contact:hover .contact__chevron {
+    transform: translateX(4px);
 }
 
 .contact__icon {
     flex-shrink: 0;
     justify-self: start;
+    position: relative;
+    z-index: 1;
 }
 
 .contact__heading {
     text-align: start;
     margin: 0;
+    position: relative;
+    z-index: 1;
+    color: var(--color-white);
 }
 
 .contact__chevron {
@@ -827,6 +869,9 @@
     justify-self: end;
     color: var(--color-white);
     opacity: 0.9;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
 }
 
 .footer {
