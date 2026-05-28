@@ -297,7 +297,7 @@
     right: 0;
     width: 2000px;
     height: 2000px;
-    background: url("assets/pics/star_big.png") center center no-repeat;
+    background: url("assets/pics/star_big.webp") center center no-repeat;
     background-size: cover;
 }
 
@@ -307,7 +307,7 @@
     left: 3%;
     width: 300px;
     height: 300px;
-    background: url("assets/pics/star_small.png") center center no-repeat;
+    background: url("assets/pics/star_small.webp") center center no-repeat;
     background-size: contain;
 }
 
@@ -411,7 +411,7 @@
     height: 100%;
     transform: translate(-50%, 0%);
     z-index: -1;
-    background: url("assets/pics/stars.png") repeat center top;
+    background: url("assets/pics/stars.webp") repeat center top;
     background-size: 100% auto;
     mix-blend-mode: color-dodge;
 }
@@ -427,7 +427,7 @@
 }
 
 .galaxy__center {
-    background: url("assets/pics/galaxy__center.png") no-repeat center;
+    background: url("assets/pics/galaxy__center.webp") no-repeat center;
     background-size: cover;
     width: 350px;
     height: 175px;
@@ -440,7 +440,7 @@
 .galaxy__body {
     width: 2000px;
     height: 2000px;
-    background: url("assets/pics/galaxy__body.png") no-repeat center center;
+    background: url("assets/pics/galaxy__body.webp") no-repeat center center;
     background-size: cover;
     animation: galaxy 30s linear infinite;
     transform-origin: center center;
@@ -483,7 +483,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: url("assets/pics/Сonstellation.png") center center no-repeat;
+    background: url("assets/pics/Сonstellation.webp") center center no-repeat;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -494,7 +494,7 @@
     position: absolute;
     top: -20%;
     right: -20%;
-    background: url("assets/pics/Galaxy.png") center center no-repeat;
+    background: url("assets/pics/Galaxy.webp") center center no-repeat;
     background-size: cover;
     width: 250%;
     height: 250%;
@@ -628,7 +628,7 @@
     width: 100%;
     height: 100%;
     background-size: 150% 150%;
-    background: url("assets/pics/Aurora_light 3.png") center top no-repeat;
+    background: url("assets/pics/Aurora_light 3.webp") center top no-repeat;
 }
 
 .skills_contacts_background__aurora_2 {
@@ -636,7 +636,7 @@
     top: 50%;
     width: 30%;
     height: 30%;
-    background: url("assets/pics/Aurora_light 2.png") no-repeat left center;
+    background: url("assets/pics/Aurora_light 2.webp") no-repeat left center;
     background-size: contain;
 }
 
@@ -646,7 +646,7 @@
     transform: translate(-50%, 0);
     width: 300px;
     height: 300px;
-    background: url("assets/pics/Aurora_light 1.png") no-repeat center center;
+    background: url("assets/pics/Aurora_light 1.webp") no-repeat center center;
     background-size: contain;
 }
 
@@ -662,25 +662,25 @@
 
 .skills_contacts_background__mountain_4 {
     left: 0;
-    background: url("assets/pics/Mountain 4.png") no-repeat left bottom;
+    background: url("assets/pics/Mountain 4.webp") no-repeat left bottom;
     background-size: contain;
 }
 
 .skills_contacts_background__mountain_3 {
     left: 20%;
-    background: url("assets/pics/Mountain 3.png") no-repeat center bottom;
+    background: url("assets/pics/Mountain 3.webp") no-repeat center bottom;
     background-size: contain;
 }
 
 .skills_contacts_background__mountain_2 {
     right: 20%;
-    background: url("assets/pics/Mountain 2.png") no-repeat center bottom;
+    background: url("assets/pics/Mountain 2.webp") no-repeat center bottom;
     background-size: contain;
 }
 
 .skills_contacts_background__mountain_1 {
     right: 0;
-    background: url("assets/pics/Mountain 1.png") no-repeat bottom right;
+    background: url("assets/pics/Mountain 1.webp") no-repeat bottom right;
     background-size: contain;
 }
 
