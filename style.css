@@ -632,50 +632,54 @@
 }
 
 .skills_contacts_background__aurora_2 {
-    left: -195px;
-    top: 849px;
-    width: 677px;
-    height: 776.53px;
-    background-image: url("assets/pics/Aurora_light 2.png");
+    left: 0;
+    top: 50%;
+    width: 30%;
+    height: 30%;
+    background: url("assets/pics/Aurora_light 2.png") no-repeat left center;
+    background-size: contain;
 }
 
 .skills_contacts_background__aurora_1 {
-    right: 570px;
-    top: 1355px;
-    width: 329px;
-    height: 303.05px;
-    background-image: url("assets/pics/Aurora_light 1.png");
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, 0);
+    width: 300px;
+    height: 300px;
+    background: url("assets/pics/Aurora_light 1.png") no-repeat center center;
+    background-size: contain;
+}
+
+.skills_contacts_background__mountain_1,
+.skills_contacts_background__mountain_2,
+.skills_contacts_background__mountain_3,
+.skills_contacts_background__mountain_4 {
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    height: 100%;
 }
 
 .skills_contacts_background__mountain_4 {
-    left: -1034px;
-    top: 1538px;
-    width: 2269px;
-    height: 1434px;
-    background-image: url("assets/pics/Mountain 4.png");
+    left: 0;
+    background: url("assets/pics/Mountain 4.png") no-repeat left bottom;
+    background-size: contain;
 }
 
 .skills_contacts_background__mountain_3 {
-    left: -588px;
-    top: 1687px;
-    width: 2044px;
-    height: 1304px;
-    background-image: url("assets/pics/Mountain 3.png");
+    left: 20%;
+    background: url("assets/pics/Mountain 3.png") no-repeat center bottom;
+    background-size: contain;
 }
 
 .skills_contacts_background__mountain_2 {
-    left: -349px;
-    top: 1646px;
-    width: 2192px;
-    height: 1186px;
-    background-image: url("assets/pics/Mountain 2.png");
+    right: 20%;
+    background: url("assets/pics/Mountain 2.png") no-repeat center bottom;
+    background-size: contain;
 }
 
 .skills_contacts_background__mountain_1 {
     right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 200px;
     background: url("assets/pics/Mountain 1.png") no-repeat bottom right;
     background-size: contain;
 }
