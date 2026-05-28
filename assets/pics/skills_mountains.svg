@@ -1,0 +1,24 @@
+<svg viewBox="0 0 1440 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6B4FD4"/>
+      <stop offset="100%" stop-color="#3D2A8C"/>
+    </linearGradient>
+    <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7B62E8"/>
+      <stop offset="100%" stop-color="#4A35A8"/>
+    </linearGradient>
+    <linearGradient id="m3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8A74F0"/>
+      <stop offset="100%" stop-color="#5A45B8"/>
+    </linearGradient>
+    <linearGradient id="m4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B86FF"/>
+      <stop offset="100%" stop-color="#6B55CC"/>
+    </linearGradient>
+  </defs>
+  <path d="M-200 420 L-80 180 L120 320 L280 140 L480 300 L720 80 L980 280 L1180 120 L1440 260 L1640 420 Z" fill="url(#m1)" opacity="0.85"/>
+  <path d="M-120 420 L40 220 L220 340 L420 160 L640 300 L900 100 L1120 260 L1320 150 L1540 420 Z" fill="url(#m2)" opacity="0.9"/>
+  <path d="M0 420 L180 260 L360 360 L560 200 L800 340 L1040 180 L1240 300 L1440 220 L1440 420 Z" fill="url(#m3)"/>
+  <path d="M200 420 L420 300 L620 380 L860 260 L1080 360 L1280 280 L1440 340 L1440 420 Z" fill="url(#m4)" opacity="0.95"/>
+</svg>

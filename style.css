@@ -611,62 +611,11 @@
 
 .skills_contacts_background {
     position: absolute;
-    inset: 0;
-    overflow: hidden;
-    background:
-        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(180, 100, 220, 0.35) 0%, transparent 55%),
-        linear-gradient(180deg, #0A071F 0%, #0D1035 35%, #12104A 70%, #1A1258 100%);
-}
-
-.skills_contacts_background__aurora,
-.skills_contacts_background__aurora_side {
-    position: absolute;
-    display: block;
-    pointer-events: none;
-}
-
-.skills_contacts_background__aurora {
-    top: 4%;
-    left: -4%;
-    width: min(142%, 2048px);
-    height: auto;
-    z-index: 0;
-}
-
-.skills_contacts_background__aurora img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.skills_contacts_background__aurora_side {
-    bottom: 8%;
-    left: -14%;
-    width: min(47%, 677px);
-    z-index: 0;
-}
-
-.skills_contacts_background__aurora_side img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.skills_contacts_background__mountains {
-    position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    height: auto;
-    min-height: 28%;
-    object-fit: cover;
-    object-position: bottom center;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.skills_contacts_background .stars {
-    z-index: 2;
+    height: 100%;
+    background: linear-gradient(0deg, #5847EA -27.12%, #191633 100%);
 }
 
 .skills_section,
@@ -682,31 +631,30 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(8px, 1.5vw, 12px);
     width: 100%;
+    max-width: 747px;
 }
 
 .skills_column {
     display: grid;
     grid-template-columns: 30px minmax(0, 1fr);
     gap: 3px;
-    align-items: start;
+    align-items: stretch;
 }
 
 .skills_column__label {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    margin: 0;
-    font-size: var(--fs-small);
-    line-height: 1;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: rgba(255, 255, 255, 0.85);
-    text-align: center;
-    justify-self: center;
-    min-height: 192px;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: stretch;
     display: flex;
-    flex-direction: column;
+    writing-mode: vertical-rl;
+    padding: 12px 6px;
+    justify-content: center;
     align-items: center;
-    gap: 2px;
+    gap: 10px;
+    border-radius: 12px 3px 3px 8px;
+    background: linear-gradient(87deg, rgba(3, 20, 30, 0.30) 0%, rgba(7, 32, 56, 0.30) 100%), linear-gradient(87deg, rgba(3, 20, 30, 0.30) 0%, rgba(7, 32, 56, 0.30) 100%);
+    box-shadow: -1px -1px 0 0 rgba(0, 0, 0, 0.25) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.25) inset;
+    backdrop-filter: blur(40px);
 }
 
 .skills_column__times {
@@ -715,30 +663,51 @@
 }
 
 .skills_list {
+    grid-column: 2;
+    grid-row: 1;
     display: grid;
     grid-gap: 3px;
     list-style: none;
     margin: 0;
     padding: 0;
+    min-width: 0;
 }
 
 .skill_item {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    min-height: 36px;
+    width: 130px;
     padding: 6px 12px;
-    box-sizing: border-box;
-    background: linear-gradient(to right top, #03141E4D, #0720384D);
-    backdrop-filter: blur(80px);
-    box-shadow: inset -1px -1px #00000040, inset 1px 1px #ffffff40;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    align-items: center;
+    gap: 6px;
+
+    border-radius: 3px;
+    background: linear-gradient(87deg, rgba(3, 20, 30, 0.30) 0%, rgba(7, 32, 56, 0.30) 100%), linear-gradient(87deg, rgba(3, 20, 30, 0.30) 0%, rgba(7, 32, 56, 0.30) 100%);
+
+    box-shadow: -1px -1px 0 0 rgba(0, 0, 0, 0.25) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.25) inset;
+    backdrop-filter: blur(40px);
+}
+
+.skills_column:first-child .skill_item {
+    border-radius: 3px 12px 3px 3px;
+    background: linear-gradient(87deg, rgba(3, 20, 30, 0.30) 0%, rgba(7, 32, 56, 0.30) 100%), linear-gradient(87deg, rgba(3, 20, 30, 0.30) 0%, rgba(7, 32, 56, 0.30) 100%);
+    box-shadow: -1px -1px 0 0 rgba(0, 0, 0, 0.25) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.25) inset;
+    backdrop-filter: blur(40px);
+}
+
+.skills_list .skill_item:first-child {
+    border-radius: 3px 12px 3px 3px;
+}
+
+.skills_list .skill_item:last-child {
+    border-radius: 3px 3px 8px 3px;
 }
 
 .skill_item__icon {
     flex-shrink: 0;
     display: block;
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
 }
 
 .skill_item__name {
@@ -789,7 +758,7 @@
     font-size: var(--fs-card-title);
     line-height: 1.2;
     font-weight: bold;
-    text-align: center;
+    text-align: start;
     margin: 0;
 }
 
@@ -798,6 +767,12 @@
     justify-self: end;
     color: #ffffff;
     opacity: 0.9;
+}
+
+.footer {
+    font-size: var(--fs-caption);
+    line-height: 1.5;
+    opacity: 0.6;
 }
 
 .skills_contacts_article .footer {
@@ -947,13 +922,30 @@
     }
 
     .skills_column__label {
-        min-height: 160px;
+        padding: 10px 3px;
         font-size: 11px;
+        border-radius: 0 20px 20px 0;
+    }
+
+    .skills_column:first-child .skill_item {
+        padding-left: 14px;
     }
 
     .skill_item {
-        padding-inline: 10px;
+        padding: 9px 10px;
         gap: 8px;
+    }
+
+    .skills_list .skill_item:first-child {
+        border-radius: 0 20px 0 0;
+    }
+
+    .skills_list .skill_item:last-child {
+        border-radius: 0 0 20px 0;
+    }
+
+    .skills_list .skill_item:only-child {
+        border-radius: 0 20px 20px 0;
     }
 
     .skill_item__name {
@@ -984,11 +976,29 @@
     }
 
     .skills_column__label {
+        grid-column: 1;
+        grid-row: auto;
+        align-self: auto;
         writing-mode: horizontal-tb;
         transform: none;
-        min-height: auto;
         flex-direction: row;
-        justify-self: start;
+        padding: 8px 12px;
+        border-radius: 24px;
+    }
+
+    .skills_list {
+        grid-column: 1;
+    }
+
+    .skills_column:first-child .skill_item {
+        padding-left: 12px;
+    }
+
+    .skills_list .skill_item,
+    .skills_list .skill_item:first-child,
+    .skills_list .skill_item:last-child,
+    .skills_list .skill_item:only-child {
+        border-radius: 24px;
     }
 }
 

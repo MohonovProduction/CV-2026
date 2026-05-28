@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="ae" viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#9999FF"/><text x="9" y="13" text-anchor="middle" fill="#1A1040" font-size="8" font-weight="700" font-family="system-ui,sans-serif">Ae</text></symbol>
+  <symbol id="pr" viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#EA77F0"/><text x="9" y="13" text-anchor="middle" fill="#2A0A30" font-size="8" font-weight="700" font-family="system-ui,sans-serif">Pr</text></symbol>
+  <symbol id="au" viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#9B4DE8"/><text x="9" y="13" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="system-ui,sans-serif">Au</text></symbol>
+  <symbol id="ai" viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#FF9A00"/><text x="9" y="13" text-anchor="middle" fill="#3A2000" font-size="8" font-weight="700" font-family="system-ui,sans-serif">Ai</text></symbol>
+  <symbol id="ps" viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#31A8FF"/><text x="9" y="13" text-anchor="middle" fill="#001A33" font-size="8" font-weight="700" font-family="system-ui,sans-serif">Ps</text></symbol>
+  <symbol id="vue" viewBox="0 0 18 18"><path d="M1 2h6l2 3.5L11 2h6L9 15 1 2z" fill="#41B883"/><path d="M4.5 2h3.5l1.5 2.5L11 2h3l-5.5 9.5L4.5 2z" fill="#35495E"/></symbol>
+  <symbol id="js" viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#F7DF1E"/><text x="9" y="13" text-anchor="middle" fill="#323330" font-size="9" font-weight="700" font-family="system-ui,sans-serif">JS</text></symbol>
+  <symbol id="html" viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#E44D26"/><text x="9" y="13" text-anchor="middle" fill="#fff" font-size="7" font-weight="700" font-family="system-ui,sans-serif">5</text></symbol>
+  <symbol id="css" viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#1572B6"/><text x="9" y="13" text-anchor="middle" fill="#fff" font-size="7" font-weight="700" font-family="system-ui,sans-serif">3</text></symbol>
+  <symbol id="figma" viewBox="0 0 18 18"><circle cx="9" cy="4.5" r="2.5" fill="#F24E1E"/><circle cx="9" cy="9" r="2.5" fill="#A259FF"/><circle cx="6.5" cy="11.5" r="2.5" fill="#1ABCFE"/><circle cx="11.5" cy="11.5" r="2.5" fill="#0ACF83"/><circle cx="9" cy="14" r="2.5" fill="#FF7262"/></symbol>
+  <symbol id="chevron" viewBox="0 0 24 24"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+</svg>
