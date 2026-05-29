@@ -29,7 +29,8 @@ const SECTION_NAV_SCROLL_OFFSET = 20;
 const PARALLAX_RATE = 0.17;
 
 function init() {
-    toggle()
+    initExperienceToggle()
+    initToggleGroupPill()
     workFullscreen = initWorkFullscreen()
     initWorkVideoControls()
     initSectionNav()
@@ -383,26 +384,86 @@ function initSectionNav() {
     window.addEventListener('resize', scheduleActiveUpdate, { passive: true });
 }
 
-function toggle() {
-    const toggleGroup = document.querySelector('.toggle_group');
+function setActiveToggleIndex(index) {
+    const toggleListWrapper = document.querySelector('.toggle_list_wrapper');
+    if (!toggleListWrapper) return;
 
-    for (let i = 0; i < toggleGroup.children.length; i++) {
-        const child = toggleGroup.children[i];
-        console.log(child)
-        child.addEventListener('click', (e) => {
-            console.log(e);
+    const tabCount = toggleListWrapper.children.length;
+    if (index < 0 || index >= tabCount) return;
 
-            const toggleGroup = document.querySelector('.toggle_group');
-            const toggleListWrapper = document.querySelector('.toggle_list_wrapper');
-            console.log(toggleListWrapper, toggleGroup)
+    document.querySelectorAll('.toggle_group').forEach((group) => {
+        [...group.children].forEach((heading, i) => {
+            heading.classList.toggle('toggle_group__heading--active', i === index);
+        });
+    });
 
-            for (let j = 0; j < toggleGroup.children.length; j++) {
-                toggleGroup.children[j].classList.remove('toggle_group__heading--active');
-                toggleListWrapper.children[j].classList.remove('toggle_list--active');
-            }
+    [...toggleListWrapper.children].forEach((list, i) => {
+        list.classList.toggle('toggle_list--active', i === index);
+    });
+}
 
-            e.target.classList.add('toggle_group__heading--active');
-            toggleListWrapper.children[i].classList.add('toggle_list--active');
-        })
-    }
+function initExperienceToggle() {
+    const toggleListWrapper = document.querySelector('.toggle_list_wrapper');
+    if (!toggleListWrapper) return;
+
+    document.addEventListener('click', (event) => {
+        const heading = event.target.closest('.toggle_group__heading');
+        if (!heading) return;
+
+        const group = heading.closest('.toggle_group');
+        if (!group) return;
+
+        const index = [...group.children].indexOf(heading);
+        if (index === -1) return;
+
+        setActiveToggleIndex(index);
+    });
+}
+
+function initToggleGroupPill() {
+    const experienceWrapper = document.querySelector('.experience_wrapper');
+    const sourceToggleGroup = experienceWrapper?.querySelector('.toggle_group');
+    if (!experienceWrapper || !sourceToggleGroup) return;
+
+    const pill = document.createElement('div');
+    pill.className = 'toggle_group_pill';
+    pill.setAttribute('aria-hidden', 'true');
+
+    const pillToggleGroup = sourceToggleGroup.cloneNode(true);
+    pillToggleGroup.classList.add('toggle_group--pill');
+    pill.appendChild(pillToggleGroup);
+    document.body.appendChild(pill);
+
+    let experienceInView = false;
+    let toggleInView = true;
+    let visibilityRaf = null;
+
+    const updatePillVisibility = () => {
+        visibilityRaf = null;
+        const shouldShow = experienceInView && !toggleInView;
+        pill.classList.toggle('is-visible', shouldShow);
+        pill.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+        document.body.classList.toggle('is-toggle-pill-visible', shouldShow);
+    };
+
+    const scheduleVisibilityUpdate = () => {
+        if (visibilityRaf !== null) return;
+        visibilityRaf = window.requestAnimationFrame(updatePillVisibility);
+    };
+
+    const observerOptions = { threshold: 0, rootMargin: '-8px 0px 0px 0px' };
+
+    const experienceObserver = new IntersectionObserver(([entry]) => {
+        experienceInView = entry.isIntersecting;
+        scheduleVisibilityUpdate();
+    }, observerOptions);
+
+    const toggleObserver = new IntersectionObserver(([entry]) => {
+        toggleInView = entry.isIntersecting;
+        scheduleVisibilityUpdate();
+    }, observerOptions);
+
+    experienceObserver.observe(experienceWrapper);
+    toggleObserver.observe(sourceToggleGroup);
+    updatePillVisibility();
 }
