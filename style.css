@@ -1523,7 +1523,7 @@ body.work-fullscreen-open {
 .section-nav__list {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--spacing-12);
     margin: 0;
     padding: var(--spacing-10) var(--spacing-16);
