@@ -26,12 +26,60 @@ function unlockPageScroll() {
 }
 
 const SECTION_NAV_SCROLL_OFFSET = 20;
+const PARALLAX_RATE = 0.17;
 
 function init() {
     toggle()
     workFullscreen = initWorkFullscreen()
     initWorkVideoControls()
     initSectionNav()
+    initBackgroundParallax()
+}
+
+function initBackgroundParallax() {
+    const backgrounds = [...document.querySelectorAll('.background')];
+    if (!backgrounds.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        backgrounds.forEach((background) => {
+            background.style.transform = '';
+        });
+        return;
+    }
+
+    const items = backgrounds
+        .map((background) => {
+            const section = background.closest('.header, .article');
+            if (!section) return null;
+
+            background.classList.add('background--parallax');
+            return { background, section };
+        })
+        .filter(Boolean);
+
+    if (!items.length) return;
+
+    let parallaxRaf = null;
+
+    const updateParallax = () => {
+        parallaxRaf = null;
+        const scrollY = window.scrollY;
+
+        items.forEach(({ background, section }) => {
+            const scrolled = scrollY - section.offsetTop;
+            const offset = scrolled * PARALLAX_RATE;
+            background.style.transform = `translate3d(0, ${offset}px, 0)`;
+        });
+    };
+
+    const scheduleParallaxUpdate = () => {
+        if (parallaxRaf !== null) return;
+        parallaxRaf = window.requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+    window.addEventListener('scroll', scheduleParallaxUpdate, { passive: true });
+    window.addEventListener('resize', scheduleParallaxUpdate, { passive: true });
 }
 
 function formatVideoTime(seconds) {

@@ -161,6 +161,7 @@ html::-webkit-scrollbar-corner,
 
 .header {
     position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -270,6 +271,13 @@ html::-webkit-scrollbar-corner,
 
 .background {
     z-index: 0;
+}
+
+.background--parallax {
+    top: -8%;
+    height: 116%;
+    bottom: auto;
+    will-change: transform;
 }
 
 .article__content {
@@ -931,6 +939,10 @@ body.work-fullscreen-open {
     .work_fullscreen__stage,
     .work__controls_progress {
         transition-duration: 0.01ms;
+    }
+
+    .background {
+        transform: none !important;
     }
 }
 
