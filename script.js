@@ -25,10 +25,13 @@ function unlockPageScroll() {
     document.body.style.paddingRight = '';
 }
 
+const SECTION_NAV_SCROLL_OFFSET = 20;
+
 function init() {
     toggle()
     workFullscreen = initWorkFullscreen()
     initWorkVideoControls()
+    initSectionNav()
 }
 
 function formatVideoTime(seconds) {
@@ -208,6 +211,128 @@ function initWorkVideoControls() {
         setProgressPercent(0);
         updateProgressLabel();
     });
+}
+
+function slugifySectionId(text, usedIds) {
+    const base = text
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\p{L}\p{N}-]/gu, '')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '') || 'section';
+
+    let id = base;
+    let suffix = 2;
+
+    while (usedIds.has(id) || document.getElementById(id)) {
+        id = `${base}-${suffix}`;
+        suffix += 1;
+    }
+
+    usedIds.add(id);
+    return id;
+}
+
+function initSectionNav() {
+    const main = document.querySelector('.page_main');
+    if (!main) return;
+
+    const headings = [...main.querySelectorAll('h2')];
+    if (!headings.length) return;
+
+    const usedIds = new Set();
+    const sections = headings.map((heading) => {
+        if (!heading.id) {
+            heading.id = slugifySectionId(heading.textContent, usedIds);
+        } else {
+            usedIds.add(heading.id);
+        }
+        return heading;
+    });
+
+    const nav = document.createElement('nav');
+    nav.className = 'section-nav';
+    nav.setAttribute('aria-label', 'Навигация по разделам');
+
+    const list = document.createElement('ol');
+    list.className = 'section-nav__list';
+
+    const items = sections.map((heading, index) => {
+        const item = document.createElement('li');
+        item.className = 'section-nav__item';
+        if (index === 0) item.classList.add('is-active');
+
+        const link = document.createElement('a');
+        link.className = 'section-nav__link';
+        link.href = `#${heading.id}`;
+        link.setAttribute('aria-current', index === 0 ? 'true' : 'false');
+
+        const dot = document.createElement('span');
+        dot.className = 'section-nav__dot';
+        dot.setAttribute('aria-hidden', 'true');
+
+        const label = document.createElement('span');
+        label.className = 'section-nav__label';
+        label.textContent = heading.textContent.trim();
+
+        link.setAttribute('aria-label', heading.textContent.trim());
+
+        link.append(dot, label);
+        item.appendChild(link);
+        list.appendChild(item);
+
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            scrollToSection(heading);
+        });
+
+        return { item, link, heading };
+    });
+
+    nav.appendChild(list);
+    document.body.appendChild(nav);
+
+    let scrollRaf = null;
+    let activeIndex = 0;
+
+    const setActiveIndex = (index) => {
+        if (index === activeIndex || index < 0 || index >= items.length) return;
+        activeIndex = index;
+
+        items.forEach(({ item, link }, i) => {
+            const isActive = i === index;
+            item.classList.toggle('is-active', isActive);
+            link.setAttribute('aria-current', isActive ? 'true' : 'false');
+        });
+    };
+
+    const updateActiveFromScroll = () => {
+        scrollRaf = null;
+        const marker = window.scrollY + SECTION_NAV_SCROLL_OFFSET + 1;
+        let nextIndex = 0;
+
+        sections.forEach((heading, index) => {
+            const top = heading.getBoundingClientRect().top + window.scrollY;
+            if (top <= marker) nextIndex = index;
+        });
+
+        setActiveIndex(nextIndex);
+    };
+
+    const scheduleActiveUpdate = () => {
+        if (scrollRaf !== null) return;
+        scrollRaf = window.requestAnimationFrame(updateActiveFromScroll);
+    };
+
+    const scrollToSection = (heading) => {
+        const top = heading.getBoundingClientRect().top + window.scrollY - SECTION_NAV_SCROLL_OFFSET;
+        window.scrollTo({ top, behavior: 'smooth' });
+    };
+
+    updateActiveFromScroll();
+    window.addEventListener('scroll', scheduleActiveUpdate, { passive: true });
+    window.addEventListener('resize', scheduleActiveUpdate, { passive: true });
 }
 
 function toggle() {
